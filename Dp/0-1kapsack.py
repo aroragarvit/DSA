@@ -18,6 +18,7 @@ wt = [10, 20, 30]
 W = 50
 n = len(val)
 K = knapsack(val, wt, W , n)
+print(K)
 result = K[n][W]
 print(result)
 lis=[]
