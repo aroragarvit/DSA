@@ -1,6 +1,8 @@
 
 
 #include <iostream>
+# include <map>
+
 using namespace std;
 
 class Node{
@@ -96,6 +98,23 @@ else{
 }
 
 }
+
+// Detect Cycle in ll , Remove cycle  , Begin of a loop in ll 
+
+bool detectLoop(Node * head){
+      map<Node *,bool> visited ;
+      Node * temp = head;
+      while(temp!=NULL){
+        if(visited[temp]){
+            return true;
+        }
+        visited [temp] =  true;
+        temp = temp->next;
+        return false;
+  }
+}
+
+
 
 
 int main(){
