@@ -99,6 +99,29 @@ else{
 
 }
 
+Node * kReverse (Node * head, int k){
+    Node * curr = head;
+    Node * prev  = NULL ;
+    Node * next = NULL;
+    int count = 0;
+    while(count<k && curr!=NULL){
+        next = curr -> next ;
+        curr->next = prev;
+        prev = curr;
+        curr = next ;
+        count++;                            
+        }
+
+
+    if (next != NULL)
+    {
+       head->next =  kReverse(curr ,k); // curr or next doesnt matter
+        
+
+    }
+
+return prev;
+}
 // Detect Cycle in ll , Remove cycle  , Begin of a loop in ll 
 
 bool detectLoop(Node * head){
@@ -106,6 +129,7 @@ bool detectLoop(Node * head){
       Node * temp = head;
       while(temp!=NULL){
         if(visited[temp]){
+            cout<<"Present on element"<<temp->data<<endl;
             return true;
         }
         visited [temp] =  true;
@@ -113,6 +137,8 @@ bool detectLoop(Node * head){
         return false;
   }
 }
+
+
 
 
 
@@ -128,6 +154,7 @@ int main(){
     insertAtTail(40,&head);
     insertAtTail(50,&head);
     insertAtTail(60,&head);
+     insertAtTail(70,&head);
     insertAtHead(0,&head);
     recursiveDisplay(head);
     cout<< "__________________________";
@@ -137,7 +164,14 @@ int main(){
 
      cout<< "__________________________";
 
+     recursiveDisplay(kReverse(head,2));
+     
+
      Node *temp = reverseLinkedListRecursive(head);
      recursiveDisplay(temp);
+
+     cout <<"-----------------------------------";
+
+     recursiveDisplay(head);
 
 }
